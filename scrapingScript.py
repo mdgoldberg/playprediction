@@ -1,26 +1,30 @@
+import multiprocessing as mp
 import sys
 
 import pandas as pd
 
 import pfr
 
+def processBS(args):
+    i, bs = args
+    print i
+    bs = pfr.boxscores.BoxScore(bs)
+    addon = bs.pbp(keepErrors=True)
+    return addon
+
 yr = int(sys.argv[1])
 
-pbp = pd.DataFrame()
 bsIDs = set()
-for i, tmID in enumerate(pfr.teams.listTeams()):
-    print i+1, tmID
+for tmID in pfr.teams.listTeams():
     tm = pfr.teams.Team(tmID)
     bss = tm.boxscores(yr)[:16]
-    for bs in bss:
-        if bs.bsID in bsIDs:
-            continue
-        else:
-            bsIDs.add(bs.bsID)
-        addon = bs.pbp(keepErrors=True)
-        addon['bsID'] = bs.bsID
-        pbp = pd.concat((pbp, addon))
+    bsIDs.update(bss)
 
+print len(bsIDs)
+pool = mp.Pool(mp.cpu_count())
+dfs = pool.map_async(processBS, enumerate(bsIDs)).get(sys.maxint)
+
+pbp = pd.concat(dfs)
 pbp = pbp.reset_index(drop=True)
 
 matches = map(pfr.utils.parsePlayDetails, pbp.detail)
