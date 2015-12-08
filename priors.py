@@ -1,6 +1,7 @@
 import copy
 import numpy as np
 import pandas as pd
+import pdb
 import pfr
 import time
 
@@ -21,16 +22,15 @@ def addPriorColumns(df):
             df.loc[df.bsID == bs, 'gameNum'] = i+1
     # add inSeasonPassPct column
     df['inSeasonPassPct'] = df.apply(inSeasonPassPct, args=(df,), axis=1)
-    print 'done with inSeasonPassPct'
     # add inGamePassPct column
-    df['inGamePassPct'] = df.apply(inGamePassPct, args=(df,))
+    df['inGamePassPct'] = df.apply(inGamePassPct, args=(df,), axis=1)
     return df
 
 
 def inSeasonPassPct(row, df):
     curYear = row['year']
     prevYear = curYear - 1
-    if prevYear <= 2001:
+    if prevYear < df.year.min():
         return np.nan
     prevSeasonPriors = df[df.year == prevYear].groupby('tm').isPass.mean()
     thisSeason = df[df.year == curYear]
@@ -47,7 +47,6 @@ def inSeasonPassPct(row, df):
 def inGamePassPct(row, df):
     firstTime = df.loc[(df.tm == row.tm) & (df.bsID == row.bsID),
                        'secsElapsedInGame'].iloc[0]
-    prevSeasonPriors = df[df.year == prevYear].groupby('tm').isPass.mean()
     thisGame = df[df.bsID == row.bsID]
     if row.secsElapsedInGame == firstTime:
         # use in-season pass pct for the first play in a game
