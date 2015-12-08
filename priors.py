@@ -21,13 +21,17 @@ def addPriorColumns(df):
         for i, bs in enumerate(bsIDsInOrder):
             df.loc[df.bsID == bs, 'gameNum'] = i+1
     # add inSeasonPassPct column
-    df['inSeasonPassPct'] = df.apply(inSeasonPassPct, args=(df,), axis=1)
+    cache = {}
+    df['inSeasonPassPct'] = df.apply(inSeasonPassPct, args=(df,cache), axis=1)
     # add inGamePassPct column
     df['inGamePassPct'] = df.apply(inGamePassPct, args=(df,), axis=1)
     return df
 
 
-def inSeasonPassPct(row, df):
+def inSeasonPassPct(row, df, cache):
+    tup = (row['year'], row['tm'], row['gameNum'])
+    if tup in cache:
+        return cache[tup]
     curYear = row['year']
     prevYear = curYear - 1
     if prevYear < df.year.min():
@@ -36,12 +40,14 @@ def inSeasonPassPct(row, df):
     thisSeason = df[df.year == curYear]
     if row.gameNum == 1:
         # get previous year's pass pct
-        return prevSeasonPriors.loc[row.tm]
+        val = prevSeasonPriors.loc[row.tm]
     else:
         # get pass pct in games before current game
         prevGames = thisSeason[(thisSeason.tm == row.tm) &
                                (thisSeason.gameNum < row.gameNum)]
-        return prevGames.isPass.mean()
+        val = prevGames.isPass.mean()
+    cache[tup] = val
+    return val
 
 
 def inGamePassPct(row, df):
