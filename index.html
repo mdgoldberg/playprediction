@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>CS 109 Final Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body class="index">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1 id="logo"><a href="index.html">Predicting Offensive Playcalling in the NFL</a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="current"><a href="index.html">Welcome</a></li>
+							<li class="submenu">
+								<a href="#">Our Project</a>
+								<ul>
+									<li><a href="collection.html">Data Collection</a></li>
+									<li><a href="cleaning.html">Cleaning and Feature Creation</a></li>
+									<li><a href="eda.html">Exploratory Data Analysis</a></li>
+									<li><a href="analysis.html">Analysis and Results</a></li>
+									<li><a href="future.html">Future Work</a></li>
+									<li><a href="video.html" class="button special">Project Video</a></li>
+								</ul>
+							</li>
+							<li><a href="https://github.com/mdgoldberg/cs109finalproject/blob/master/Index.ipynb" class="button special">Process Notebook</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+
+					<!--
+						".inner" is set up as an inline-block so it automatically expands
+						in both directions to fit whatever's inside it. This means it won't
+						automatically wrap lines, so be sure to use line breaks where
+						appropriate (<br />).
+					-->
+					<div class="inner">
+
+						<header>
+							<h2>CS 109 Final Project</h2>
+						</header>
+						<p><strong>Predicting Offensive
+						<br />
+						Playcalling in the NFL
+						<br />
+						<br />
+						By:
+						<br />
+						Adam Gilfix
+						<br />
+						Matt Goldberg
+						<br />
+						Steven Rachesky
+						<br />
+						Nathaniel Ver Steeg</strong></p>
+						
+						<footer>
+							<ul class="buttons">
+								<li><a href="collection.html" class="button small">Data Collection</a></li>
+								<li><a href="cleaning.html" class="button small">Cleaning and Feature Creation</a></li>
+								<li><a href="eda.html" class="button small">Exploratory Data Analysis</a></li>
+								<li><a href="analysis.html" class="button small">Analysis and Results</a></li>
+								<li><a href="future.html" class="button small">Future Work</a></li>
+							</ul>
+						</footer>
+						
+						<footer>
+							<ul class="buttons vertical">
+								<li><a href="#main" class="button special fit scrolly">Click Here to Begin Exploring Project</a></li>
+							</ul>
+						</footer>
+
+					</div>
+
+				</section>
+
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<span class="icon fa-bar-chart-o"></span>
+						<h2>Motivation for the Project</h2>
+						<p>Two of the most common adages in sports are, “Defense wins championships,” and “The best offense
+						<br />
+						is a good defense,” revealing the long-held belief that a strong defense is a crucial element of a 
+						<br />
+						successful franchise.  In a <a href="http://www.nytimes.com/2013/02/03/magazine/nate-silver-super-bowl.html">2013 New York Times article</a> discussing his predictions for Super Bowl XLVII, 
+						<br />
+						Nate Silver supported this with some numbers, noting that the 20 all-time best defenses went 14-6 
+						<br />
+						in Super Bowl appearances, while the 20 all-time best offenses managed only a mediocre 10-10.  A year
+						<br />
+						before, <a href="http://freakonomics.com/2012/01/20/does-defense-really-win-championships/">a Freakonomics blog</a> suggested that the adages may be a bit of an exaggeration, but even if 
+						<br />
+						defense isn’t the most crucial part of a team, 	it is still an important one, and this certainly holds
+						<br />
+						true in the NFL.</p>
+						
+						<p>For example, on November 16, 2015, Rob Ryan was fired from his position as New Orleans Saints defensive
+						<br />
+						coordinator on the heels of a bad loss to the Washington Redskins. Ryan’s career on the defensive side of 
+						<br />
+						the ball has been less than impressive, as <a href="http://www.nytimes.com/2015/11/18/sports/football/rob-ryan-fired-by-saints-as-defense-struggles.html">this New York Times article</a> discusses, and it’s natural to ask 
+						<br />
+						what he, and other struggling defensive coordinators, could be doing differently.  One obvious 
+						<br />
+						responsibility of a defensive coordinator is to make playcalling decisions against an opponent’s offense, 
+						<br />
+						which is difficult without knowing what play the opposition will call.  As data scientists, we started to 
+						<br />
+						wonder if these offensive playcalls could be predicted, based on factors such as field position, time in the 
+						<br />
+						game, etc.  So in this project, we have decided to undertake this challenge of predicting offensive playcalls
+						<br />
+						by testing a variety of classifiers on data obtained from Pro-Football-Reference.com.  Our hope is that the 
+						<br />
+						playcalling decisions of Rob Ryan and other defensive coordinators around the league can be better informed by 
+						<br />
+						data, and that these classifiers may offer some insight into the playcalling strategies of offenses in the NFL.</p>
+					</header>
+					
+				</article>
+				
+				<section class="wrapper style1 container">
+						<div class="content">
+							<section>
+								<a href="#" class="image featured"><img src="images/rob_ryan.jpg" style="" alt=""/></a>
+								<header>
+									<h3>Rob Ryan, former New Orleans Saints Defensive Coordinator</h3>
+								</header>
+							</section>
+						</div>
+				</section>
+				
+				<!-- CTA -->
+				<section id="cta">
+					
+ 					<footer>
+ 						<ul class="buttons">
+							<li><a href="collection.html" class="button special">Continue to Next Page</a></li>
+ 						</ul>
+ 					</footer>
+ 
+				</section>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

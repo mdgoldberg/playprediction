@@ -1,1 +1,89 @@
-After finishing the data collection, we moved on to data cleaning and feature engineering. Due to some instances of missing data from our scraped dataset, we were able to create necessary columns and new features with given information, and then, when no longer needed, drop rows where missing data was significant enough to warrant that.  More interestingly, using scraped columns and new indicators created at this stage (such as if the team with the ball was the home team), we were able to generate many new columns that were crucial for our models.  New features that we generated include proportion of plays that were passes in the previous season, current season, and in the current game; the scoring margin; seconds elapsed in the half; and timeouts remaining in the half for each team. Additionally, we created indicator features such as distance to the first-down marker (discretized into "short," "medium," "long," and "very long"), whether the team was in field goal range, whether the team was in the red zone, whether there were less than 3 minutes remaining in the half, and if the team's previous play from scrimmage was a pass. Many of these features would prove crucial to the success of our modeling, as the engineering of features we know as football fans to be important in the run/pass decision were able to assist our models by providing them with a form of domain knowledge.
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Cleaning and Feature Creation</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body class="no-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Predicting Offensive Playcalling in the NFL</a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="current"><a href="index.html">Welcome</a></li>
+							<li class="submenu">
+								<a href="#">Our Project</a>
+								<ul>
+									<li><a href="collection.html">Data Collection</a></li>
+									<li><a href="cleaning.html">Cleaning and Feature Creation</a></li>
+									<li><a href="eda.html">Exploratory Data Analysis</a></li>
+									<li><a href="analysis.html">Analysis and Results</a></li>
+									<li><a href="future.html">Future Work</a></li>
+									<li><a href="video.html" class="button special">Project Video</a></li>
+								</ul>
+							</li>
+							<li><a href="https://github.com/mdgoldberg/cs109finalproject/blob/master/Index.ipynb" class="button special">Process Notebook</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<span class="icon fa-bar-chart-o"></span>
+						<h2>Cleaning and Feature Creation</h2>
+						<p>Prepping a dataset for analysis</p>
+						<br />
+						<p>Due to some instances of missing data from our scraped dataset,
+						we were able to create necessary columns and new features with given information, 
+						and then, when no longer needed, drop rows where missing data was significant 
+						enough to warrant that.  More interestingly, using scraped columns and new indicators 
+						created at this stage (such as if the team with the ball was the home team), we were 
+						able to generate many new columns that were crucial for our models.  These new 
+						features included previous season passing percentage [number of passes per number
+						of (pass + run plays)], current season passing percentage, in-game passing percentage, 
+						scoring margin, seconds elapsed in the game and half, and timeouts remaining in the 
+						half for the team with the ball and its opponent.  Additionally, we created some other
+						indicator features that would be essential for modeling, including a ‘RESP’ column 
+						(response variable for isPass==True) as well as indicators for down, quarter, if the
+						team’s previous play from scrimmage was a pass, if the team with the ball was in the
+						red zone, in field goal range, and if it was the start of a new drive.</p>
+					</header>
+					
+					<section class="wrapper style1 special container">
+						<footer class="major">
+							<ul class="buttons">
+								<li><a href="collection.html" class="button">Prev: Data Collection</a></li>
+								<li><a href="eda.html" class="button special">Next: EDA</a></li>
+							</ul>
+						</footer>
+					</section>
+				</article>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
